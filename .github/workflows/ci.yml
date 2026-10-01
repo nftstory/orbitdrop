@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Toolchain
+        run: swift --version
+      - name: Build
+        run: swift build
+      - name: Test
+        # Tests generate their own fixtures, open no UI and use no network.
+        # ffmpeg-dependent tests skip themselves when ffmpeg is absent.
+        run: swift test
+      - name: Assemble app bundle (not published)
+        run: bash scripts/build-app.sh

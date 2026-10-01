@@ -1,0 +1,26 @@
+# SwiftPM / Xcode
+.build/
+.swiftpm/
+Package.resolved
+*.xcodeproj
+xcuserdata/
+DerivedData/
+
+# Build products (never commit binaries)
+dist/
+*.app
+*.icns
+*.iconset/
+*.dSYM/
+
+# macOS
+.DS_Store
+
+# OrbitDrop's own staging folders, should one survive a crash
+.orbitdrop-staging-*/
+
+# Local artifacts: research captures, screenshots, scratch media
+research/
+screenshots/
+*.local
+*.log
